@@ -37,12 +37,12 @@ export class PdfDetailsService {
           height: mainContent.scrollHeight,
         });
         const mainImgData = mainCanvas.toDataURL("image/png");
-  
+        const extraPadding = 30; // Padding at the bottom in px
         // Create a new jsPDF instance
         const doc = new jsPDF({
           orientation: "p", // Portrait orientation
           unit: "px",
-          format: [mainCanvas.width, mainCanvas.height], // Custom page size based on canvas
+          format: [mainCanvas.width, mainCanvas.height+extraPadding], // Custom page size based on canvas
         });
         const imgWidth = doc.internal.pageSize.getWidth();
         const imgHeight = (mainCanvas.height * imgWidth) / mainCanvas.width;
